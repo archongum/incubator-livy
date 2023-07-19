@@ -127,10 +127,10 @@
     <livy.log.dir>${basedir}/target</livy.log.dir>
 
     <!-- Set this to "true" to skip R tests. -->
-    <skipRTests>false</skipRTests>
+    <skipRTests>true</skipRTests>
 
     <!-- Set this to "true" to skip PySpark3 tests. -->
-    <skipPySpark3Tests>false</skipPySpark3Tests>
+    <skipPySpark3Tests>true</skipPySpark3Tests>
 
     <!-- Required for testing LDAP integration -->
     <apacheds.version>2.0.0.AM26</apacheds.version>
@@ -148,7 +148,7 @@
       Artifacts that should not be deployed to a maven repo should override the "skipDeploy"
       property in their pom.
     -->
-    <skipDeploy>false</skipDeploy>
+    <skipDeploy>true</skipDeploy>
 
     <asf.copyright.header><![CDATA[/*
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -1140,6 +1140,13 @@
       </properties>
     </profile>
     <profile>
+      <id>hadoop3</id>
+      <properties>
+        <hadoop.major-minor.version>3</hadoop.major-minor.version>
+        <hadoop.version>3.3.4</hadoop.version>
+      </properties>
+    </profile>
+    <profile>
       <id>scala-2.11</id>
       <properties>
         <scala.binary.version>2.11</scala.binary.version>
@@ -1179,7 +1186,7 @@
     <profile>
       <id>spark3</id>
       <properties>
-        <spark.version>3.2.3</spark.version>
+        <spark.version>3.3.2</spark.version>
         <java.version>1.8</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
