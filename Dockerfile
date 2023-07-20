@@ -7,9 +7,11 @@ WORKDIR /workdir
 RUN set -eux \
   && mvn package -DskipTests -Phadoop3 -Pspark3 -Pscala-2.12 -pl '!integration-test,!python-api,!examples,!coverage' \
   && mkdir -p /tmp/package \
-  && mv ./assembly/target/apache-livy-*.zip /apache-livy.zip
+  && mv ./assembly/target/apache-livy-*.zip /apache-livy.zip \
+  && unzip /apache-livy.zip -d /tmp \
+  && mv /tmp/apache-livy-*/ /tmp/livy
 
 # ------------------------- #
 
 FROM busybox
-COPY --from=builder /apache-livy.zip /
+COPY --from=builder /tmp/livy /tmp/livy
